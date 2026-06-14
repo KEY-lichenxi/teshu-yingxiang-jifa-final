@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaVinci Resolve 期末課題ガイドライン</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+            line-height: 1.8;
+            color: #2c2c2a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #534ab7 0%, #7f77dd 100%);
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .header .course-info {
+            margin-top: 25px;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .intro {
+            background: #f1efe8;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border-left: 5px solid #534ab7;
+        }
+
+        .intro h2 {
+            color: #534ab7;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .intro p {
+            color: #444441;
+            font-size: 15px;
+        }
+
+        .project {
+            margin-bottom: 60px;
+            padding: 35px;
+            border: 2px solid #d3d1c7;
+            border-radius: 16px;
+            background: #fafafa;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .project-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #534ab7 0%, #7f77dd 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .project-title {
+            flex: 1;
+        }
+
+        .project-title h2 {
+            font-size: 22px;
+            color: #2c2c2a;
+            margin-bottom: 5px;
+        }
+
+        .project-title .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #e6f1fb;
+            color: #185fa5;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h3 {
+            font-size: 18px;
+            color: #534ab7;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid #534ab7;
+        }
+
+        .section ul, .section ol {
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #444441;
+            line-height: 1.6;
+        }
+
+        .requirement-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid #d3d1c7;
+        }
+
+        .requirement-box h4 {
+            color: #185fa5;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .requirement-box h4:before {
+            content: "✓";
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #185fa5;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+
+        .tech-specs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .tech-spec {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #d3d1c7;
+            text-align: center;
+        }
+
+        .tech-spec .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .tech-spec .label {
+            font-size: 13px;
+            color: #888780;
+            margin-bottom: 5px;
+        }
+
+        .tech-spec .value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2c2c2a;
+        }
+
+        .grading-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .grading-table thead {
+            background: linear-gradient(135deg, #534ab7 0%, #7f77dd 100%);
+            color: white;
+        }
+
+        .grading-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .grading-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+            color: #444441;
+        }
+
+        .grading-table tbody tr:hover {
+            background: #f9f9f9;
+        }
+
+        .percentage {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #e6f1fb;
+            color: #185fa5;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .warning-box {
+            background: #faedda;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #ba7517;
+        }
+
+        .warning-box h4 {
+            color: #854f0b;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .warning-box h4:before {
+            content: "⚠";
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .warning-box ul {
+            padding-left: 25px;
+        }
+
+        .warning-box li {
+            color: #633806;
+            margin-bottom: 8px;
+        }
+
+        .resource-box {
+            background: #e1f5ee;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #1d9e75;
+        }
+
+        .resource-box h4 {
+            color: #0f6e56;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .resource-box a {
+            color: #0f6e56;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .resource-box a:hover {
+            text-decoration: underline;
+        }
+
+        .submission-checklist {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 2px solid #97c459;
+        }
+
+        .submission-checklist h4 {
+            color: #3b6d11;
+            font-size: 17px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .submission-checklist h4:before {
+            content: "📦";
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #eaf3de;
+            border-radius: 8px;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checklist-item label {
+            font-size: 14px;
+            color: #27500a;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .tips-box {
+            background: #eefdf5;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #639922;
+        }
+
+        .tips-box h4 {
+            color: #3b6d11;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .tips-box li {
+            color: #27500a;
+        }
+
+        .footer {
+            background: #2c2c2a;
+            color: white;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        .footer .contact {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .header {
+                background: #534ab7 !important;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎬 DaVinci Resolve 期末課題ガイドライン</h1>
+            <div class="subtitle">Final Project Guidelines - Special Imaging Techniques Course</div>
+            <div class="course-info">
+                <strong>コース名：</strong>特殊映像技法<br>
+                <strong>課題タイプ：</strong>期末総合プロジェクト（3つから選択、または全て制作）
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>📋 課題について</h2>
+                <p>本期末課題は、学生の DaVinci Resolve における総合的な能力を評価することを目的としています。＜strong＞事前制作の創造性、ポストプロダクション、脚本制作＜/strong＞の3つの核心分野をカバーしています。学生は以下の3つのプロジェクトから＜strong＞少なくとも1つ＜/strong＞を選択して完了することができ、能力のある学生は3つ全てを完了することを推奨します。</p>
+                <p style="margin-top: 15px;">各プロジェクトは異なるスキル育成の重点を設計しており、学生が学期末までにポストプロダクションの完全なワークフローを独立して完了できることを確保します。</p>
+            </div>
+
+            <!-- 项目一 -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-number">1</div>
+                    <div class="project-title">
+                        <h2>Fusion VFX制作プロジェクト</h2>
+                        <span class="tag">核心技術 · Fusionページ · 3Dコンポジット</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📝 プロジェクトテーマ</h3>
+                    <p style="font-size: 15px; color: #444441; line-height: 1.8; margin-bottom: 15px;">
+                        <strong>DaVinci Resolve の Fusion ページ</strong>を使用して、完全な<strong>VFX動画コンテンツ</strong>を制作してください。
+                    </p>
+                    <p style="font-size: 14px; color: #888780; line-height: 1.8;">
+                        <strong>ジャンルは不問</strong>（SF、CM、MV、実写合成など）、ただし<strong>核心的なVFXは必ず Fusion ページ内で完了</strong>させてください。
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3>⚙️ 技術要件（必須）</h3>
+                    <p style="font-size: 13px; color: #888780; margin-bottom: 15px;">本課題は Fusion の総合能力を評価するものです。以下の要件を必ず満たしてください：</p>
+
+                    <div class="requirement-box">
+                        <h4>Fusion ページを使用した核心制作</h4>
+                        <ul>
+                            <li>✅ <strong>核心アニメーション、VFX、コンポジット</strong>は必ず <strong>Fusion ページ</strong>で完了すること</li>
+                            <li>ノードベースのワークフローを使用した複雑なコンポジットを推奨します</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-box">
+                        <h4>Fusion キーフレームアニメーション</h4>
+                        <ul>
+                            <li>以下の項目の<strong>少なくとも1つ</strong>を <strong>Keyframe（キーフレーム）</strong>で制御すること：
+                                <ul style="margin-top: 8px;">
+                                    <li>📍 位置（Position / Translation）</li>
+                                    <li>📏 スケール（Scale）</li>
+                                    <li>🔄 回転（Rotation）</li>
+                                    <li>👁 不透明度（Opacity）</li>
+                                </ul>
+                            </li>
+                            <li>🌟 <strong>Spline エディタの使用を推奨</strong>します（イーズイン・イーズアウト）</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-box">
+                        <h4>Fusion 3D システム</h4>
+                        <ul>
+                            <li>作品中で<strong>Fusion 3D ワークフローを必ず使用</strong>してください。以下を含みますがこれらに限定されません：
+                                <ul style="margin-top: 8px;">
+                                    <li>✔ <strong>3D 空間</strong>（3D Workspace）</li>
+                                    <li>✔ <strong>Camera3D</strong> / <strong>Light</strong></li>
+                                    <li>✔ <strong>Text3D</strong> またはインポートした <strong>3D モデル</strong>（FBX / OBJ など）</li>
+                                    <li>✔ <strong>2Dから3Dへ</strong>（ImagePlane3D）</li>
+                                </ul>
+                            </li>
+                            <li>💡 無料の3Dモデルは <a href="https://sketchfab.com/" target="_blank" style="color: #185fa5; font-weight: 500;">Sketchfab</a> からダウンロード可能です</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🎞️ 出力仕様</h3>
+                    <div class="tech-specs">
+                        <div class="tech-spec">
+                            <div class="icon">⏱</div>
+                            <div class="label">尺</div>
+                            <div class="value">≥ 15秒</div>
+                        </div>
+                        <div class="tech-spec">
+                            <div class="icon">📐</div>
+                            <div class="label">解像度</div>
+                            <div class="value">1920×1080 以上</div>
+                        </div>
+                        <div class="tech-spec">
+                            <div class="icon">🎞</div>
+                            <div class="label">フレームレート</div>
+                            <div class="value">自由選択</div>
+                        </div>
+                        <div class="tech-spec">
+                            <div class="icon">🔊</div>
+                            <div class="label">音声</div>
+                            <div class="value">任意（加点あり）</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 13px; color: #888780; margin-top: 10px;">* 縦型動画の場合は事前に說明してください</p>
+                </div>
+
+                <div class="section">
+                    <h3>📁 素材の使用について</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="background: #eaf3de; padding: 15px; border-radius: 8px;">
+                            <h4 style="color: #3b6d11; margin-bottom: 10px; font-size: 15px;">✅ 使用可</h4>
+                            <ul style="font-size: 13px; color: #27500a;">
+                                <li>自身で撮影・制作した素材</li>
+                                <li>自身でダウンロードした<strong>著作権フリー素材</strong></li>
+                                <li>自作の3Dモデルまたは3Dテキスト</li>
+                            </ul>
+                        </div>
+                        <div style="background: #fcebeb; padding: 15px; border-radius: 8px;">
+                            <h4 style="color: #a32d2d; margin-bottom: 10px; font-size: 15px;">❌ 使用禁止</h4>
+                            <ul style="font-size: 13px; color: #791f1f;">
+                                <li>既成の Fusion <strong>テンプレート</strong>をそのまま使用</li>
+                                <li>文字のみを変更し、<strong>構造を変更しない</strong>こと</li>
+                                <li>他者のオリジナルコンテンツを使用</li>
+                                <li>ネットからダウンロードした動画をそのまま提出</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📤 提出内容</h3>
+                    <div class="submission-checklist">
+                        <h4>提出チェックリスト</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p1-1">
+                            <label for="p1-1">🎬 <strong>最終動画ファイル</strong>（MP4 / MOV）</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p1-2">
+                            <label for="p1-2">📁 <strong>DaVinci Resolve プロジェクトファイル</strong>（.drp または Project Archive）</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p1-3">
+                            <label for="p1-3">📝 <strong>简要說明書</strong>（Word / PDF / TXT いずれも可）以下を含む：
+                                <ul style="margin-top: 5px; font-size: 13px;">
+                                    <li>作品のテーマ</li>
+                                    <li>宣伝対象（該当する場合）</li>
+                                    <li>使用した Fusion 技術（キーフレーム / 3D / ノード）</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📊 採点基準</h3>
+                    <table class="grading-table">
+                        <thead>
+                            <tr>
+                                <th>採点項目</th>
+                                <th>採点基準</th>
+                                <th>割合</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Fusion 技術の使用が要件を満たしているか</strong></td>
+                                <td>Fusion ページで核心制作が完了しているか、キーフレームアニメーションの使用が規範通りか</td>
+                                <td><span class="percentage">40%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3D 構築とアニメーションの完成度</strong></td>
+                                <td>3D空間、Camera3D、Light、Text3D または 3Dモデルの使用品質</td>
+                                <td><span class="percentage">25%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>宣伝ロジックと画面表現</strong></td>
+                                <td>作品に明確なテーマ表現があるか、画面構図と視覚効果</td>
+                                <td><span class="percentage">20%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>全体の完成度と専門性</strong></td>
+                                <td>プロジェクトファイルの規範性、說明書の完全性、創造的表現</td>
+                                <td><span class="percentage">15%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tips-box">
+                    <h4>💡 補足說明</h4>
+                    <ul>
+                        <li>本課題は<strong>技術のプロセス</strong>を重視し、単なる「見栄え」ではありません</li>
+                        <li><strong>オリジナリティと実験的な表現</strong>を推奨します</li>
+                        <li>AIで生成した素材を使用した場合は、說明書に<strong>Fusion を使用して制作したこと</strong>を明記してください</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 项目二 -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-number">2</div>
+                    <div class="project-title">
+                        <h2>オリジナル動画制作プロジェクト</h2>
+                        <span class="tag">創造能力 · 著作権意識 · 総合制作</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📝 プロジェクトテーマ</h3>
+                    <p style="font-size: 15px; color: #444441; line-height: 1.8; margin-bottom: 15px;">
+                        <strong>完全にオリジナルな</strong>動画コンテンツを制作し、撮影からポストプロダクションまでを全て自身で独立完成してください。
+                    </p>
+                    <p style="font-size: 14px; color: #888780; line-height: 1.8;">
+                        本プロジェクトは学生の<strong>オリジナリティ意識</strong>と<strong>著作権コンプライアンス意識</strong>を育成することを重点としており、将来の仕事におけて合法的かつ規範に則った動画制作ができることを確保します。
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3>🎬 コンテンツ要件</h3>
+                    <div class="requirement-box">
+                        <h4>動画コンテンツは純粋に自作でなければなりません</h4>
+                        <ul>
+                            <li>✅ <strong>自身で撮影した</strong>動画コンテンツ（旅行撮影などの自主的制作コンテンツ）</li>
+                            <li>✅ <strong>自身で制作したアニメ</strong>（1フレームのみではなく、動的な作品であること）</li>
+                            <li>✅ <strong>著作権フリー音楽</strong>の使用（Creative Commons / Public Domain）</li>
+                            <li>✅ 自身で制作した <strong>AI生成動画</strong>：AI映画、AIショートフィルム、AIアニメなど（使用したAIツールの明記が必要）</li>
+                            <li>✅ 自身で録音した環境音、ボイスオーバーなど</li>
+                        </ul>
+                        <div style="background: #eaf3de; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                            <p style="font-size: 13px; color: #27500a; margin-bottom: 8px;"><strong>🎵 推奨するAI制作ツール（これらに限定されません）：</strong></p>
+                            <p style="font-size: 13px; color: #3b6d11; line-height: 1.8;">
+                                即夢（JiMeng） · HappyHorse · Gemini · Midjourney · 小雲雀（XiaoYunQue） · LibTV など<br>
+                                <em style="color: #639922;">AIツールの使用に制限はなく、自身の制作ニーズに合ったツールを自由に選択可能です</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>🚫 著作権禁止事項（非常に重要）</h3>
+                    <div class="warning-box">
+                        <h4>以下の内容は厳格に禁止されます</h4>
+                        <ul>
+                            <li>❌ <strong>他者のゲーム映像</strong>を使用して編集すること</li>
+                            <li>❌ <strong>他者のアニメ</strong>を使用して編集すること</li>
+                            <li>❌ <strong>他者の動画</strong>（映画、テレビドラマ、バラエティ、ショート動画など）を使用すること</li>
+                            <li>❌ 権限のない<strong>商用音楽</strong>を使用すること</li>
+                            <li>❌ <strong>ネットの画像・動画素材</strong>を明確な許可を得ずに使用すること</li>
+                        </ul>
+                    </div>
+                    <div class="resource-box">
+                        <h4>✅ 推奨する著作権フリーリソースウェブサイト</h4>
+                        <ul style="font-size: 14px; color: #0f6e56;">
+                            <li>🎵 <strong>音楽：</strong>
+                                <a href="https://creativecommons.org/" target="_blank">Creative Commons</a> ·
+                                <a href="https://freemusicarchive.org/" target="_blank">Free Music Archive</a> ·
+                                <a href="https://incompetech.com/" target="_blank">Incompetech</a>
+                            </li>
+                            <li>🎥 <strong>動画素材：</strong>
+                                <a href="https://pexels.com/videos" target="_blank">Pexels Videos</a> ·
+                                <a href="https://pixabay.com/videos" target="_blank">Pixabay Videos</a>
+                            </li>
+                            <li>🖼 <strong>画像素材：</strong>
+                                <a href="https://unsplash.com" target="_blank">Unsplash</a> ·
+                                <a href="https://pixabay.com" target="_blank">Pixabay</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>⚙️ 技術要件</h3>
+                    <ul>
+                        <li>DaVinci Resolve を使用して<strong>完全なポストプロダクション</strong>を行うこと（編集、カラーグレーディング、音声処理）</li>
+                        <li><strong>カラーページ</strong>を使用した色補正とスタイル化カラーグレーディングを推奨します</li>
+                        <li><strong>Fairlight ページ</strong>を使用した音声ポストプロダクション処理を推奨します</li>
+                        <li>尺：<strong>1〜30分</strong>（コンテンツに応じて適宜調整可）</li>
+                        <li>解像度：<strong>1920×1080</strong> 以上</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>📤 提出内容</h3>
+                    <div class="submission-checklist">
+                        <h4>提出チェックリスト</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p2-1">
+                            <label for="p2-1">🎬 <strong>最終動画ファイル</strong>（MP4 / MOV）</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p2-2">
+                            <label for="p2-2">📁 <strong>DaVinci Resolve プロジェクトファイル</strong></label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p2-3">
+                            <label for="p2-3">📝 <strong>著作権宣言書類</strong>：
+                                <ul style="margin-top: 5px; font-size: 13px;">
+                                    <li>使用した全ての素材の出典を記載すること</li>
+                                    <li>音楽、画像などのリソースのライセンス方式を明記すること</li>
+                                    <li>AIツールを使用した場合、ツール名と用途を明記すること</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📊 採点基準</h3>
+                    <table class="grading-table">
+                        <thead>
+                            <tr>
+                                <th>採点項目</th>
+                                <th>採点基準</th>
+                                <th>割合</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>オリジナリティと著作権コンプライアンス</strong></td>
+                                <td>コンテンツが完全にオリジナルか、著作権侵害リスクがあるか</td>
+                                <td><span class="percentage">35%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>撮影と構図の品質</strong></td>
+                                <td>画面の安定性、構図の美感、撮影技術の運用</td>
+                                <td><span class="percentage">25%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ポストプロダクション完成度</strong></td>
+                                <td>編集リズム、カラーグレーディング、音声処理の品質</td>
+                                <td><span class="percentage">25%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>創造的表現とナラティブ能力</strong></td>
+                                <td>作品に明確なテーマとストーリーラインがあるか</td>
+                                <td><span class="percentage">15%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 项目三 -->
+            <div class="project">
+                <div class="project-header">
+                    <div class="project-number">3</div>
+                    <div class="project-title">
+                        <h2>ナレーション制作・音声編集プロジェクト</h2>
+                        <span class="tag">ストーリー理解 · 音声編集 · 二力言語字幕</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📝 プロジェクトテーマ</h3>
+                    <p style="font-size: 15px; color: #444441; line-height: 1.8; margin-bottom: 15px;">
+                        教員が提供する<strong>「天門祭」編集動画</strong>に基づき、<strong>ナレーション制作、録音、字幕制作</strong>を行ってください。
+                    </p>
+                    <div style="background: #e6f1fb; padding: 15px 20px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
+                        <span style="font-size: 28px;">🎥</span>
+                        <div>
+                            <p style="font-size: 13px; color: #185fa5; margin-bottom: 5px;"><strong>天門祭 参考動画</strong></p>
+                            <a href="https://www.youtube.com/watch?v=HbcH5197UNE" target="_blank" style="font-size: 14px; color: #185fa5; text-decoration: none; word-break: break-all;">https://www.youtube.com/watch?v=HbcH5197UNE</a>
+                        </div>
+                    </div>
+                    <p style="font-size: 14px; color: #888780; line-height: 1.8;">
+                        本プロジェクトは学生の<strong>ストーリー理解能力、脚本制作能力、音声編集能力</strong>、および<strong>二力言語字幕制作能力</strong>を育成することを目的としています。
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3>📋 プロジェクトフロー</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e0e0e0; text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📖</div>
+                            <h4 style="color: #534ab7; font-size: 15px; margin-bottom: 8px;">第一步</h4>
+                            <p style="font-size: 13px; color: #444441;">背景ストーリーを理解する</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e0e0e0; text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">✍️</div>
+                            <h4 style="color: #534ab7; font-size: 15px; margin-bottom: 8px;">第二步</h4>
+                            <p style="font-size: 13px; color: #444441;">ナレーション原稿を執筆する</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e0e0e0; text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">🎙</div>
+                            <h4 style="color: #534ab7; font-size: 15px; margin-bottom: 8px;">第三步</h4>
+                            <p style="font-size: 13px; color: #444441;">ナレーションを録音・生成する</p>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #e0e0e0; text-align: center;">
+                            <div style="font-size: 32px; margin-bottom: 10px;">📝</div>
+                            <h4 style="color: #534ab7; font-size: 15px; margin-bottom: 8px;">第四步</h4>
+                            <p style="font-size: 13px; color: #444441;">二力言語字幕を制作する</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📖 具体的工作要件</h3>
+                    
+                    <div class="requirement-box">
+                        <h4>背景ストーリーを理解する</h4>
+                        <ul>
+                            <li>教員が提供する「天門祭」動画を注意深く視聴する</li>
+                            <li>動画の<strong>文化的背景、ストーリー情节、感情的基調</strong>を理解する</li>
+                            <li>必要な資料調査を行い、コンテンツに対する深い理解を確保する</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-box">
+                        <h4>ナレーション原稿制作（ストーリー要約能力）</h4>
+                        <ul>
+                            <li>動画コンテンツに基づき、<strong>完全なナレーション原稿</strong>を執筆する</li>
+                            <li>ナレーションは以下のことができる必要があります：
+                                <ul style="margin-top: 8px;">
+                                    <li>動画の背景と文化的意義を紹介する</li>
+                                    <li>動画中の关键的な画面に対して<strong>說明と解読</strong>を行う</li>
+                                    <li>動画が伝えたい<strong>核心テーマ</strong>をまとめる</li>
+                                </ul>
+                            </li>
+                            <li>原稿の長さは動画の尺と一致させ、長すぎたり短すぎたりしないようにする</li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-box">
+                        <h4>ナレーション録音（音声編集能力）</h4>
+                        <ul>
+                            <li><strong>言語要件：</strong><strong>英語</strong> または <strong>日本語</strong> でナレーションを録音すること</li>
+                            <li><strong>録音方式（どちらか一つを選択）：</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>🤖 <strong>AI音声生成</strong>を使用（使用したAIツールの明記が必要）</li>
+                                    <li>🎙 <strong>自身で録音</strong>（音質の明確さを保証すること）</li>
+                                </ul>
+                            </li>
+                            <li>DaVinci Resolve の <strong>Fairlight ページ</strong>を使用して音声編集を行う：
+                                <ul style="margin-top: 8px;">
+                                    <li>音量バランスを調整する</li>
+                                    <li>必要な<strong>音声エフェクト</strong>を追加する（ノイズリダクション、イコライザーなど）</li>
+                                    <li>BGM・環境音と<strong>ミキシング</strong>を行う</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="requirement-box">
+                        <h4>字幕制作（二力言語能力）</h4>
+                        <ul>
+                            <li><strong>字幕言語ルール：</strong>
+                                <ul style="margin-top: 8px;">
+                                    <li>ナレーションが<strong>日本語</strong>の場合 → <strong>英文字幕</strong>を追加</li>
+                                    <li>ナレーションが<strong>英語</strong>の場合 → <strong>日本語字幕</strong>を追加</li>
+                                </ul>
+                            </li>
+                            <li>DaVinci Resolve の<strong>字幕機能</strong>または<strong>Fusion タイトルツール</strong>を使用して字幕を制作する</li>
+                            <li>字幕要件：
+                                <ul style="margin-top: 8px;">
+                                    <li>タイムラインが正確で、ナレーションと<strong>完全に同期</strong>していること</li>
+                                    <li>フォントが明確に読み取れ、サイズが適切であること</li>
+                                    <li>位置が合理的で、画面の重要内容を隠さないこと</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>⚙️ 技術要件</h3>
+                    <ul>
+                        <li>DaVinci Resolve を使用して<strong>全ての音声編集と字幕制作</strong>を完了すること</li>
+                        <li>音声音量と字幕アニメーションを制御するために<strong>キーフレーム</strong>の使用を推奨します</li>
+                        <li>尺：オリジナル動画と一致させる（またはナレーションの必要性に応じて適宜調整）</li>
+                        <li>出力フォーマット：<strong>MP4（字幕焼き込み）</strong> または <strong>MOV（字幕トラック付き）</strong></li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h3>📤 提出内容</h3>
+                    <div class="submission-checklist">
+                        <h4>提出チェックリスト</h4>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p3-1">
+                            <label for="p3-1">🎬 <strong>最終動画ファイル</strong>（ナレーションと字幕付き）</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p3-2">
+                            <label for="p3-2">📁 <strong>DaVinci Resolve プロジェクトファイル</strong></label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p3-3">
+                            <label for="p3-3">📄 <strong>ナレーション原稿</strong>（Word / PDF / TXT）</label>
+                        </div>
+                        <div class="checklist-item">
+                            <input type="checkbox" id="p3-4">
+                            <label for="p3-4">📝 <strong>プロジェクト說明書類</strong>：
+                                <ul style="margin-top: 5px; font-size: 13px;">
+                                    <li>使用したナレーション言語および録音方式（AI / 自身で録音）</li>
+                                    <li>使用したAIツール（該当する場合）</li>
+                                    <li>音声編集プロセス中に使用した技術とエフェクト</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>📊 採点基準</h3>
+                    <table class="grading-table">
+                        <thead>
+                            <tr>
+                                <th>採点項目</th>
+                                <th>採点基準</th>
+                                <th>割合</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ストーリー理解とナレーション品質</strong></td>
+                                <td>動画の背景を正確に理解しているか、ナレーション原稿に深みと論理があるか</td>
+                                <td><span class="percentage">30%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>音声編集品質</strong></td>
+                                <td>音量バランス、ミキシング効果、音声エフェクトの使用</td>
+                                <td><span class="percentage">25%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>字幕制作品質</strong></td>
+                                <td>タイムラインの正確性、字幕の可読性、二力言語翻訳品質</td>
+                                <td><span class="percentage">25%</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>全体の完成度</strong></td>
+                                <td>ナレーション、音声、字幕の全体の調和性と専門性</td>
+                                <td><span class="percentage">20%</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tips-box">
+                    <h4>💡 補足說明</h4>
+                    <ul>
+                        <li>本プロジェクトは<strong>コンテンツに対する理解</strong>を強調し、単なる技術操作ではありません</li>
+                        <li>ナレーション原稿には<strong>個人的見解</strong>が含まれるべきであり、単なる画面描寫ではありません</li>
+                        <li>音声編集時、<strong>ナレーションとBGMのバランス</strong>に注意し、ナレーションが明確に聞こえることを確保すること</li>
+                        <li>字幕翻訳は<strong>正確かつ自然</strong>であるべきであり、硬直した直訳を避けること</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 总结 -->
+            <div style="background: linear-gradient(135deg, #534ab7 0%, #7f77dd 100%); padding: 40px; border-radius: 16px; color: white; margin-top: 40px;">
+                <h2 style="font-size: 24px; margin-bottom: 20px; text-align: center;">📌 課題提出総合要件</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div>
+                        <h3 style="font-size: 16px; margin-bottom: 10px; color: #eefdf5;">⏰ 締切日</h3>
+                        <p style="font-size: 14px; opacity: 0.9;">2026年7月24日 23:59</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 16px; margin-bottom: 10px; color: #eefdf5;">❓ 質問相談</h3>
+                        <p style="font-size: 14px; opacity: 0.9;">Blackboard Message を通じて連絡してください</p>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); text-align: center;">
+                    <p style="font-size: 15px; opacity: 0.9;">🌟 皆さんの期末が順調に進み、素晴らしい作品を制作することを願っています！🌟</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>特殊映像技法</strong></p>
+            <p>本ガイドラインは DaVinci Resolve 公式認定トレーナー <strong>李晨曦（Li Chenxi）</strong> が編制したものであり、学生の参考に提供されます</p>
+            <div class="contact">
+                <p style="font-size: 12px; margin-top: 10px;">© 2026 特殊映像技法 コース</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
